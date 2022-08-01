@@ -1,5 +1,4 @@
-#include <iostream>
-#include <tools.h>
+#include "tools.h"
 
 using namespace std;
 
@@ -58,45 +57,3 @@ int main()
     delete[] category; // Se libera la memoria
     return 0;
 }
-
-/*
-    while(run){
-        cout << "Menu:\n"
-                "1. Registrar categoria.\n"
-                "2. Mostrar categorias.\n"
-                "3. Terminar.\n"
-                "Opcion: ";
-        cin >> option;
-        cin.ignore();
-
-        switch (option) {
-        case '1':
-            cout << "Ingrese la nueva categoria: ";
-            cin.getline(category, 20);
-
-            to_upper(category);
-            if(find(data, size, category)){
-                cout << "La categoria ya esta registrada" << endl;
-            }else{
-                data = append(data, size, category);
-            }
-
-            size++;
-
-            break;
-        case '2':
-            print(data, size);
-
-            break;
-        case '3':
-            run = false;
-
-            break;
-        default:
-            cout << "Opcion no valida." << endl;
-
-            break;
-        }
-    }
-
-*/

@@ -21,6 +21,7 @@ int main()
         system("cls"); // Se limpia la consola
 
         if(option == 1){
+            /* Se le pide al usuario que ingrese su numero de identificacion */
             cout << "Ingrese su Nro. de documento(obligatorio): ";
             cin >> auxNum;
             cin.ignore();
@@ -29,36 +30,47 @@ int main()
             se le asigna un registro, de lo contrario se imprime un mendaje correspondiente */
             if(!find(id, size, auxNum)){
                 id = append(id, size, auxNum);
+
                 system("cls"); // Se limpia la consola
 
+                /* Se le pide al usuario que ingrese su nombre y apellido */
                 cout << "Ingrese su nombre y apellido(obligatorio): ";
                 cin.getline(aux, 50);
                 name = append(name, size, aux);
+
                 system("cls"); // Se limpia la consola
 
+                /* Se le pide al usuario que ingrese su pais de origen */
                 cout << "Nota: Envie una x si no desea ingresar su pais\n"
                         "Ingrese su pais: ";
                 cin.getline(aux, 50);
                 country = append(country, size, aux);
+
                 system("cls"); // Se limpia la consola
 
+                /* Se le pide al usuario que ingrese su numero de telefono */
                 cout << "Nota: Envie un 0 si no desea ingresar su telefono. \n"
                         "Ingrese su Nro. de telefono: ";
                 cin >> auxNum;
                 cin.ignore();
                 phone = append(phone, size, auxNum);
+
                 system("cls"); // Se limpia la consola
 
+                /* Se le pide al usuario que ingrese su fecha de nacimiento */
                 cout << "Nota: Envie una x si no desea ingresar la fecha\n"
                         "Ingrese su fecha de nacimiento: ";
                 cin.getline(aux, 50);
                 dateBirth = append(dateBirth, size, aux);
+
                 system("cls"); // Se limpia la consola
 
+                /* Se le pide al usuario que ingrese la categoria a la que pertenece */
                 cout << "Nota: Envie una x si no desea ingresar su categoria\n"
                         "Ingrese su categoria: ";
                 cin.getline(aux, 50);
                 category = append(category, size, aux);
+
                 system("cls"); // Se limpia la consola
 
                 cout << "El usuario ha sido registrado exitosamente.\n" << endl;

@@ -26,6 +26,7 @@ void print(long long *id, char **name, char **country, long long *phone,
     for(int i=0; i<size; ++i){
         cout << i+1 << ". " << id[i] << " - " << name[i] << " - " << country[i] << " - ";
 
+        /* Si un usuario no ingreso su telefono se imprime un x en su lugar */
         if(phone[i] != 0) cout << phone[i] << " - ";
         else cout << "x - ";
 
@@ -36,12 +37,17 @@ void print(long long *id, char **name, char **country, long long *phone,
 
 
 bool find(long long *array, int size, long long num){
+    // array es es arreglo en el que se hara la busqueda
+    // size es el tamaño del arreglo en el que se hara la busqueda
+    // num es el numero a buscar
+
     for(int i=0; i<size; ++i){
+        /* Se comprueba si cada valor de array es igual al numero buscado */
         if(array[i] == num){
-            return true;
+            return true; // Se retorna true si el numero a buscar existe en el arreglo
         }
     }
-    return false;
+    return false; // Se retorna false si e numero albuscar NO existe en el arreglo
 }
 
 

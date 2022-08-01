@@ -11,8 +11,8 @@ int main()
 
     while(true)
     {
-        option = menu();
-        system("cls");
+        option = menu(); // Se imprime el menu de opciones
+        system("cls"); // Se limpia la consola
 
         if(option == 1){
 
@@ -32,10 +32,12 @@ int main()
             {
                 data = append(data, size, category);
                 cout << "La categoria " << category << " ha sido registrada con exito.\n" << endl;
-            }
-            else cout << "La categoria ingresada ya se encuentra registrada." << endl;
 
-            size++; // Se aumenta el tamaño del arreglo ya que se añadio un nuevo dato;
+            }else {
+                cout << "La categoria ingresada ya se encuentra registrada.\n" << endl;
+            }
+
+            size++; // Se aumenta el tamaño del arreglo ya que se añadio un nuevo dato
 
         }else if(option == 2){
             /* Se imprime la lista de las categorias que estan registradas */
@@ -43,6 +45,7 @@ int main()
 
         }else if(option == 3){
             break; // Se rompe el ciclo infinito
+
         }else{
             /* Si la opcion ingresada no es valida se le indica al usuario que intente de nuevo */
             cout << "Opcion invalida. Intente de nuevo.\n" << endl;
@@ -55,5 +58,6 @@ int main()
     }
     delete[] data; // Se liberan los espacios de memoria de las filas
     delete[] category; // Se libera la memoria
+
     return 0;
 }

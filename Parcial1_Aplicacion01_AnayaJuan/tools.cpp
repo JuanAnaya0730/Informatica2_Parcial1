@@ -30,6 +30,8 @@ void print(char **array, int size){
     // array es el arreglo a imprimir
     // size es el tamaño del arrglo a imprimir
 
+    cout << "Categorias" << endl;
+
     /* Se imprime cada palabra del arreglo */
     for(int i=0; i<size; ++i){
         cout << i+1 << ". " << array[i] << endl;

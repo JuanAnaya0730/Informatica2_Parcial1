@@ -19,7 +19,7 @@ void print(char **, int);
 que indica si la encontro */
 bool find(char **, int, char *);
 
-/* Esta funcion se encarga de añadir al final de un arreglo una cadena de caracteres*/
+/* Esta funcion se encarga de añadir al final de un arreglo una cadena de caracteres */
 char** append(char **, int, char *);
 
 #endif // TOOLS_H

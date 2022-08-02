@@ -33,11 +33,11 @@ int main()
                 data = append(data, size, category);
                 cout << "La categoria " << category << " ha sido registrada con exito.\n" << endl;
 
+                size++; // Se aumenta el tamaño del arreglo ya que se añadio un nuevo dato
+
             }else {
                 cout << "La categoria ingresada ya se encuentra registrada.\n" << endl;
             }
-
-            size++; // Se aumenta el tamaño del arreglo ya que se añadio un nuevo dato
 
         }else if(option == 2){
             /* Se imprime la lista de las categorias que estan registradas */

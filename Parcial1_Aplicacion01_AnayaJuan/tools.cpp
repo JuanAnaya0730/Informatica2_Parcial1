@@ -4,19 +4,32 @@ int menu(void){
     int option; // Variable que almacenara una opcion escogida por el usuario
 
     /* Se imprime el menu con la opciones correspondientes a la aplicacion */
-    cout << "Menu:\n"
-            "1. Registrar categoria.\n"
-            "2. Mostrar categorias.\n"
-            "3. Terminar.\n"
-            "Opcion: ";
-    cin >> option; // Se toma la opcion escogida por el usuario
+    while(true){
+        cout << "Menu:\n"
+                "1. Registrar categoria.\n"
+                "2. Mostrar categorias.\n"
+                "3. Busqueda inteligente.\n"
+                "4. Terminar.\n"
+                "Opcion: ";
+        cin >> option; // Se toma la opcion escogida por el usuario
+
+        system("cls"); // Se limpia la consola
+
+        if(option < 1 || option >4){
+            /* Si la opcion ingresada no es valida se le indica al usuario que intente de nuevo */
+            cout << "Opcion invalida. Intente de nuevo.\n" << endl;
+
+        }else{
+            break;
+        }
+    }
     cin.ignore();
 
     return option; // Se retorna la opcion escogida por el usuario
 }
 
 void to_upper(char *array){
-    // array es el arreglo que se parasara a mayusculas
+    // array es el arreglo que se pasara a mayusculas
 
     for(int i=0; i<int(strlen(array)); ++i){
         /* Se verifica si una determinada letra del arreglo el minuscula */
@@ -39,6 +52,28 @@ void print(char **array, int size){
     cout << endl;
 }
 
+void print(char **array, int size, char *str){
+    // array es el arreglo que contiene las palabras a imprimir
+    // size es el tamaño del arreglo que contiene las palabras a imprimir
+    // str criterio que tiene que cumplir una palabra para que se pueda imprimir
+
+    cout << "Resultados para " << str << endl;
+
+    /* Se itera todo el arreglo */
+    for(int i=0, j=1; i<size; ++i){
+
+        /* Se comprueba si cada palabra cumple con el criterio de busqueda,
+        si lo cumple dicha paralabra se imprime */
+        if(strstr(array[i], str) != nullptr){
+            cout << j << ". " << array[i] << endl;
+            j++;
+        }else if(j==1 && i==size-1){
+            cout << "Sin resultados" << endl;
+        }
+    }
+    cout << endl;
+}
+
 bool find(char **array, int size, char *str){
     // array es el arreglo en el cual se realizara la busqueda
     // size es el tamaño del arreglo en el que se realizara la busqueda
@@ -50,7 +85,16 @@ bool find(char **array, int size, char *str){
             return true; // Se retorna true si se encuuentra la palabra
         }
     }
+
     return false; // Se retorna false en caso de que no se encuentre la palabra
+}
+
+bool find_keyword(char *str1, char *str2){
+    if(strstr(str1, str2) != nullptr){
+        return true;
+    }
+
+    return false;
 }
 
 char** append(char **array, int size, char *str){

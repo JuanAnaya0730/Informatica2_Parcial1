@@ -36,6 +36,7 @@ int main()
                 /* Se le pide al usuario que ingrese su nombre y apellido */
                 cout << "Ingrese su nombre y apellido(obligatorio): ";
                 cin.getline(aux, 50);
+                to_upper(aux);
                 name = append(name, size, aux);
 
                 system("cls"); // Se limpia la consola
@@ -44,6 +45,7 @@ int main()
                 cout << "Nota: Envie una x si no desea ingresar su pais\n"
                         "Ingrese su pais: ";
                 cin.getline(aux, 50);
+                to_upper(aux);
                 country = append(country, size, aux);
 
                 system("cls"); // Se limpia la consola
@@ -61,6 +63,7 @@ int main()
                 cout << "Nota: Envie una x si no desea ingresar la fecha\n"
                         "Ingrese su fecha de nacimiento: ";
                 cin.getline(aux, 50);
+                to_upper(aux);
                 dateBirth = append(dateBirth, size, aux);
 
                 system("cls"); // Se limpia la consola
@@ -69,6 +72,7 @@ int main()
                 cout << "Nota: Envie una x si no desea ingresar su categoria\n"
                         "Ingrese su categoria: ";
                 cin.getline(aux, 50);
+                to_upper(aux);
                 category = append(category, size, aux);
 
                 system("cls"); // Se limpia la consola
@@ -87,11 +91,21 @@ int main()
             print(id, name, country, phone, dateBirth, category, size);
 
         }else if(option == 3){
-            break; // Se rompe el ciclo infinito
+
+            /* Se le pide al usuario que ingrese el criterio para realizar la busqueda */
+            cout << "Ingrese la palabra clave: ";
+            cin.getline(aux, 20);
+
+            system("cls"); // Se limpia la consola
+
+            /* El criterio ingresado se convierte a su equivalente en mayuscula */
+            to_upper(aux);
+
+            /* Se imprimen todos los usuarios que tienen la palabra calve ingresada */
+            print(id, name, country, phone, dateBirth, category, size, aux);
 
         }else{
-            /* Si la opcion ingresada no es valida se le indica al usuario que intente de nuevo */
-            cout << "Opcion invalida. Intente de nuevo.\n" << endl;
+            break; // Se rompe el ciclo infinito
         }
     }
 

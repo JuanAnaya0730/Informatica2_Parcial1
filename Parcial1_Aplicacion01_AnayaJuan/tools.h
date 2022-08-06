@@ -15,13 +15,12 @@ void to_upper(char *);
 /* Esta funcion imprime un arreglo bidimencional */
 void print(char **, int);
 
+/* Esta funcion imprime las categorias que tengan determinado criterio */
 void print(char **, int, char *);
 
 /* Esta funcion busca una cadena de caracteres en un arreglo y retorna un booleano
 que indica si la encontro */
 bool find(char **, int, char *);
-
-bool find_keyword(char *, char *);
 
 /* Esta funcion se encarga de añadir al final de un arreglo una cadena de caracteres */
 char** append(char **, int, char *);

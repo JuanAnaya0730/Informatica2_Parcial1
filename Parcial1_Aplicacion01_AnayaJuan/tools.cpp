@@ -1,7 +1,7 @@
 #include "tools.h"
 
 int menu(void){
-    int option; // Variable que almacenara una opcion escogida por el usuario
+    string option; // Variable que almacenara una opcion escogida por el usuario
 
     /* Se imprime el menu con la opciones correspondientes a la aplicacion */
     while(true){
@@ -15,7 +15,7 @@ int menu(void){
 
         system("cls"); // Se limpia la consola
 
-        if(option < 1 || option >4){
+        if(option[0] < 49 || option[0] > 52 || option.length() > 1){
             /* Si la opcion ingresada no es valida se le indica al usuario que intente de nuevo */
             cout << "Opcion invalida. Intente de nuevo.\n" << endl;
 
@@ -25,7 +25,7 @@ int menu(void){
     }
     cin.ignore();
 
-    return option; // Se retorna la opcion escogida por el usuario
+    return stoi(option); // Se retorna la opcion escogida por el usuario
 }
 
 void to_upper(char *array){

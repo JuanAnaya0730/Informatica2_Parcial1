@@ -1,18 +1,42 @@
 #include "tools.h"
 
 int menu(void){
-    int option; // Variable que almacenara una opcion escogida por el usuario
+    string option; // Variable que almacenara una opcion escogida por el usuario
 
     /* Se imprime el menu con la opciones correspondientes a la aplicacion */
-    cout << "Menu:\n"
-            "1. Registrar usuario.\n"
-            "2. Mostrar usuarios.\n"
-            "3. Terminar.\n"
-            "Opcion: ";
-    cin >> option; // Se toma la opcion escogida por el usuario
+    while(true){
+        cout << "Menu:\n"
+                "1. Registrar usuario.\n"
+                "2. Mostrar usuarios.\n"
+                "3. Busqueda inteligente.\n"
+                "4. Terminar.\n"
+                "Opcion: ";
+        cin >> option; // Se toma la opcion escogida por el usuario
+
+        system("cls"); // Se limpia la consola
+
+        if(option[0] < 49 || option[0] > 52 || option.length() > 1){
+            /* Si la opcion ingresada no es valida se le indica al usuario que intente de nuevo */
+            cout << "Opcion invalida. Intente de nuevo.\n" << endl;
+
+        }else{
+            break;
+        }
+    }
     cin.ignore();
 
-    return option; // Se retorna la opcion escogida por el usuario
+    return stoi(option); // Se retorna la opcion escogida por el usuario
+}
+
+void to_upper(char *array){
+    // array es el arreglo que se pasara a mayusculas
+
+    for(int i=0; i<int(strlen(array)); ++i){
+        /* Se verifica si una determinada letra del arreglo el minuscula */
+        if(array[i] >= 97 && array[i] <= 122){
+            array[i] -= 32; // Se convierte la letra misnuscula en mayuscula
+        }
+    }
 }
 
 void print(long long *id, char **name, char **country, long long *phone,
@@ -28,9 +52,58 @@ void print(long long *id, char **name, char **country, long long *phone,
 
         /* Si un usuario no ingreso su telefono se imprime un x en su lugar */
         if(phone[i] != 0) cout << phone[i] << " - ";
-        else cout << "x - ";
+        else cout << "X - ";
 
         cout << dateBirth[i] << " - " << category[i] << endl;
+    }
+    cout << endl;
+}
+
+void print(long long *id, char **name, char **country, long long *phone,
+           char **dateBirth, char **category, int size, char *str){
+    // id, name, country, phone, dateBirth y category son los arreglos que contienen los posibles usuarios a imprimir
+    // size es el tamaño de los arreglos a imprimir
+    // str es el criterio de busqueda
+
+    char *aux1 = nullptr, *aux2 = nullptr;
+
+    cout << "Resultados para " << str << endl;
+
+    /* Se itera todo el arreglo */
+    for(int i=0, j=1; i<size; ++i){
+
+        /* Se pasa el dato int de id a un arreglo de caracteres para facilitar la busqueda*/
+        aux1 = new char[to_string(id[i]).length()+1];
+        for(int h=0; h < int(to_string(id[i]).length()) + 1; ++h){
+            aux1[h] = to_string(id[i])[h];
+        }
+
+        /* Se pasa el dato int de phone a un arreglo de caracteres para facilitar la busqueda*/
+        aux2 = new char[to_string(phone[i]).length()+1];
+        for(int h=0; h < int(to_string(phone[i]).length()) + 1; ++h){
+            aux2[h] = to_string(phone[i])[h];
+        }
+
+        /* Se comprueba si cada palabra cumple con el criterio de busqueda,
+        si lo cumple dicha paralabra se imprime */
+        if(strstr(aux1, str) != nullptr || strstr(name[i], str) != nullptr || strstr(country[i], str) != nullptr ||
+           strstr(aux2, str) != nullptr || strstr(dateBirth[i], str) != nullptr || strstr(category[i], str) != nullptr){
+
+            cout << j << ". " << id[i] << " - " << name[i] << " - " << country[i] << " - ";
+
+            /* Si un usuario no ingreso su telefono se imprime un x en su lugar */
+            if(phone[i] != 0) cout << phone[i] << " - ";
+            else cout << "X - ";
+
+            cout << dateBirth[i] << " - " << category[i] << endl;
+
+            j++;
+        }else if(j==1 && i==size-1){
+            cout << "Sin resultados" << endl;
+        }
+
+        delete[] aux1;
+        delete[] aux2;
     }
     cout << endl;
 }

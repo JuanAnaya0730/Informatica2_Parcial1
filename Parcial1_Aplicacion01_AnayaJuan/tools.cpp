@@ -89,14 +89,6 @@ bool find(char **array, int size, char *str){
     return false; // Se retorna false en caso de que no se encuentre la palabra
 }
 
-bool find_keyword(char *str1, char *str2){
-    if(strstr(str1, str2) != nullptr){
-        return true;
-    }
-
-    return false;
-}
-
 char** append(char **array, int size, char *str){
     // array es el arreglo al que se le añadira una palabra
     // size es el tamaño del arreglo al que se le añadira la palabra
